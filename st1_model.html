@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>模型决策中心</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.3.0/echarts-en.common.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">模型管理</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.html">首页</a></li>
+            <li><a href="c1.html">建模任务中心</a></li>
+            <li><a href="s1.html">模型决策中心</a></li>
+            <li><a href="index.html">配置项</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <input type="text" placeholder="Email" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-success">Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+<div class="jumbotron">
+  
+</div>
+
+    <div class="container">
+
+      <div class="row">
+        <!-- Standard button -->
+        <button type="button" class="btn btn-info" onclick="link(1)">数据集配置</button>
+
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-primary" onclick="link(2)">特征筛选</button>
+
+        <!-- Indicates a successful or positive action -->
+        <button type="button" class="btn btn-success" onclick="link(3)">模型及参数项</button>
+
+      </div>
+
+      <div class="col-md-12">
+          <h3>模型项</h3>
+          <table class="table">
+              <tbody>
+                  <tr>
+                      <td>fisher判别</td>
+                      <td>from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA</td>
+                  </tr>
+                  <tr>
+                      <td>逻辑回归</td>
+                      <td>from sklearn.linear_model import LogisticRegression as lg</td>
+                  </tr>
+                  <tr>
+                      <td>贝叶斯-高斯判别</td>
+                      <td>from sklearn.naive_bayes import GaussianNB</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div>
+          <h3>添加模型</h3>
+          <form>
+                <div class="form-group">
+                  <label>描述</label>
+                  <input class="form-control" type="text" name="t1" placeholder="fisher判别" />
+              </div>
+              <div class="form-group">
+                  <input class="form-control" type="" name="" placeholder="from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA" />
+              </div>
+          <button type="submit" class="btn btn-default">提交</button>
+          </form>
+      </div>
+
+      <div class="col-md-12">
+          <h3>模型参数项</h3>
+          <select class="form-control">
+            <option>fisher判别</option>
+            <option>逻辑回归</option>
+            <option>贝叶斯-高斯判别</option>
+          </select>
+          <table class="table">
+              <tbody>
+                  <tr>
+                      <td>fisher判别默认参数项(奇异值分解法)</td>
+                      <td>solver='svd', shrinkage=None, priors=None,
+                 n_components=None, store_covariance=False, tol=1e-4</td>
+                  </tr>
+                  <tr>
+                      <td>fisher判别lsqr(最小平方QR分解法)</td>
+                      <td>solver='svd', shrinkage=None, priors=None,
+                 n_components=None, store_covariance=False, tol=1e-4</td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+      <div>
+          <h3>添加模型系数</h3>
+          <form>
+              <div class="form-group">
+                <label>选择要设定的模型</label>
+                <select class="form-control">
+                  <option>fisher判别</option>
+                  <option>逻辑回归</option>
+                  <option>贝叶斯-高斯判别</option>
+                </select>
+              </div>
+                <div class="form-group">
+                  <label for="t1">描述</label>
+                  <input class="form-control" type="text" id="t1" name="t1" placeholder="fisher判别lsqr(最小平方QR分解法)" />
+              </div>
+              <div class="form-group">
+                <label for ="args">参数设置</label>
+                  <input class="form-control" type="" id="args" name="" placeholder="solver='svd', shrinkage=None, priors=None,
+                 n_components=None, store_covariance=False, tol=1e-4" />
+              </div>
+          <button type="submit" class="btn btn-default">提交</button>
+          </form>
+      </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->   
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript">
+      function link(num)
+      {
+        if(num==1){
+            window.location.href = "st1.html";
+        }
+        else if (num==2) {
+            window.location.href = "st1_featureSelect.html";
+        }
+        else if (num==3) {
+            window.location.href = "st1_model.html";
+        }
+      }
+    </script>
+</body>
+</html>
